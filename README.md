@@ -2,4 +2,4 @@
 
 ## Labs
 
-- [Lab 1](https://seg3125.dmitrykutin.com/labs/lab1/index.html) 
+- [Lab 1](https://seg3125.dmitrykutin.com/lab1/index.html) 
