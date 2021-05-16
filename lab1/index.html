@@ -8,12 +8,10 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        <a href="https://apple.ca" target="_blank">
-
+        <a class="header__link" href="https://apple.ca" target="_blank">
             <div class="header">
-                    <img src="assets/apple.png" alt="A screenshot of Apple's corporate landing page"/ class="img__content">
                 <div class="overlay">
-                    <h1> Evaluation of Apple's User Interface </h1>
+                    <h1> Evaluating Apple's User Interface </h1>
                 </div>
             </div>
         </a>
@@ -21,12 +19,51 @@
             <h2> Submit your thoughts </h2>
             <div class="form">
                 <form>
-                    <label for="name">What stood out the most?</label>
-                    <input type="text" id="cta" name="cta" />
+                    <h3>How did the UI make you feel?</h3>
+                    <div class="survey--item">
+                        <label for="name" value="What stood out the most?" aria-hidden="true"></label>
+                        <input type="text" id="cta" name="cta" />
+                    </div>
 
-                    <input type="checkbox" id="campus" name="likes" value="campus" />
-                    
-                    <label for="campus">campus</label><br>
+                    <h3>Which product did Apple highlight?</h3>
+                    <div class="survey--item">
+                        <input type="radio" id="phone" name="highlight" value="phone">
+                        <label for="phone">iPhone</label><br>
+                        <input type="radio" id="phone" name="highlight" value="phone">
+                        <label for="female">iPad</label><br>
+                        <input type="radio" id="other" name="highlight" value="other">
+                        <label for="other">Other</label>
+                    </div>
+
+                    <h3>Single selection list</h3>
+                    <div class="survey--item">
+                        <label for="cars" value="Choose a car" aria-hidden="true"></label>
+                        <select name="cars" id="cars">
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="mercedes">Mercedes</option>
+                        <option value="audi">Audi</option>
+                        </select>
+                    </div>
+
+                    <h3>Multi-choice selection</h3>
+                    <div class="survey--item">
+                        <input type="checkbox" id="phone" name="highlight" value="phone">
+                        <label for="phone">iPhone</label><br>
+                        <input type="checkbox" id="phone" name="highlight" value="phone">
+                        <label for="ipad">iPad</label><br>
+                        <input type="checkbox" id="other" name="highlight" value="other">
+                        <label for="other">Other</label>
+                    </div>
+
+                    <h3>Submit your final thoughts.</h3>
+                    <div class="survey--item">
+                        <label for="w3review" aria-hidden="true" value="Review of W3Schools:"></label>
+                        <textarea id="w3review" name="w3review" rows="4" cols="50">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+                        </textarea> 
+                    </div>
+
+                    <input type="submit">
                 </form>
             </div>
         </main>        

@@ -1,52 +1,145 @@
 /* Font Imports */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400');
 
 * {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    font-weight: 300;
+    color: #2E3138;
 }
 
 main {
     width: 60%;
     margin: auto;
+    margin-top: 24px;
     justify-content: center;
+}
+
+h1,
+h2 {
+    font-weight: 400;
 }
 
 h1 {
     font-size: 2.825em;
-    margin: 24px 0 18px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid grey;
     color: white;
-    padding-left: 24px;
+    line-height: 1.2;
+    display: inline;
+
+    width: 720px;
+    transition: 0.2s;
+
+    background: #00000063;
+}
+
+h2 {
+    font-size: 2.125em;
+}
+
+h3 {
+    font-size: 1.125em;
+    margin: 24px 0;
+}
+
+label {
+    font-size: 1.125em;
+}
+
+textarea,
+input,
+select,
+label {
+    color: #6C6F7D;
+}
+
+input {
+    margin: 6px 0;
+}
+
+input[type=text] {
+    margin: 24px 0;
+    display: block;
+    width: 320px;
+    padding: 6px;
+}
+
+textarea,
+select {
+    width: 320px;
+    padding: 6px;
+}
+
+input[type=submit] {
+    display: block;
+    width: 120px;
+    cursor: pointer;
+    outline: none;
+
+    padding: 12px;
+    margin: 24px 0;
+
+    border-radius: 6px;
+    border: none;
+
+    color: white;
+    background-color: #2E3138;
+
+    transition: 0.2s;
+}
+
+input[type=submit]:hover,
+input[type=submit]:focus {
+    background-color: #333;
+    transition: 0.2s;
+
+}
+
+
+a.header__link {
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+a.header__link:hover h1 {
+    background: #232323a9;
+    -moz-box-shadow: -6px -4px 1px 0px #2323232e, 2px 0px 0px #232323d9;
+    -webkit-box-shadow: -6px -4px 1px 0px #2323232e, 2px 0px 0px #232323d9;
+    box-shadow: -6px -4px 1px 0px #2323232e, 2px 0px 0px #232323d9;
+    transition: 0.2s;
+
 }
 
 .header {
     position: relative;
+    background-image: url(../assets/apple.png);
+    background-position: center;
+    -moz-box-shadow: inset 5px 0 0px #000000;
+    -webkit-box-shadow: inset 0 0 0 50px #000000;
+    box-shadow: inset 0 -22px 114px 6px #000000;
+    background-size: cover;
+    height: 60vh;
 }
 
 .overlay {
     position: absolute;
-    top: 75%;
     bottom: 0;
-    left: 0;
+    left: calc(33.33% / 2);
     background: none;
+    display: inline-block;
+
+    margin: 24px;
+    width: 720px;
 }
 
-.img__content {
-    width: 100%;
-    height: 100vh;
-    filter: brightness(100%);
-    transition: ease-in-out 0.2s;
-    margin-bottom: 72px;
+.form {
+    margin: 24px 6px;
 }
 
-.img__content:hover,
-.img__content:focus {
-    filter: brightness(75%);
-    transition: ease-in-out 0.2s;
+.survey--item {
+    margin: 24px 0 24px 12px
 }
 
 @media only screen and (max-width: 768px) {
@@ -54,8 +147,15 @@ h1 {
         width: 80%;
     }
 
-    .img__content {
-        width: calc(100% - 8px);
-        margin: 4px 4px 8px;
+    .overlay {
+        width: 320px;
+        left: 0;
+    }
+
+    input[type=submit],
+    input[type=text],
+    select,
+    textarea {
+        width: 100%;
     }
 }

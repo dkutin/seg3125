@@ -1,5 +1,5 @@
-# SEG3125 - Design & Analysis of User Interfaces
+## SEG3125 - Design & Analysis of User Interfaces
 
-## Labs
+### Labs
 
-- [Lab 1](https://seg3125.dmitrykutin.com/lab1/index.html) 
+- [Lab 1](https://seg3125.dmitrykutin.com/lab1)
