@@ -16,56 +16,69 @@
             </div>
         </a>
         <main>
-            <h2> Submit your thoughts </h2>
+            <h2> Submit your thoughts. </h2>
             <div class="form">
                 <form>
-                    <h3>How did the UI make you feel?</h3>
+                    <h3>What is your name?</h3>
                     <div class="survey--item">
-                        <label for="name" value="What stood out the most?" aria-hidden="true"></label>
-                        <input type="text" id="cta" name="cta" />
+                        <label for="name" value="What is your name?" aria-hidden="true"></label>
+                        <input type="text" id="name" name="name" />
                     </div>
 
-                    <h3>Which product did Apple highlight?</h3>
+                    <h3>What is your occupation?</h3>
                     <div class="survey--item">
-                        <input type="radio" id="phone" name="highlight" value="phone">
-                        <label for="phone">iPhone</label><br>
-                        <input type="radio" id="phone" name="highlight" value="phone">
-                        <label for="female">iPad</label><br>
+                        <label for="occupation" value="What is your occupation?" aria-hidden="true"></label>
+                        <select name="occupation" id="occupation">
+                            <option value="student">Student</option>
+                            <option value="webdev">Web developer</option>
+                            <option value="uxui">UX/UI Designer</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <h3>Which product did Apple highlight <em>the most</em>?</h3>
+                    <div class="survey--item">
+                        <input type="radio" id="iphone" name="highlight" value="iphone">
+                        <label for="iphone">iPhone</label><br>
+                        <input type="radio" id="ipad" name="highlight" value="ipad">
+                        <label for="ipad">iPad</label><br>
+                        <input type="radio" id="watch" name="highlight" value="watch">
+                        <label for="watch">Apple Watch</label><br>
+                        <input type="radio" id="mac" name="highlight" value="mac">
+                        <label for="mac">iMac</label><br>
                         <input type="radio" id="other" name="highlight" value="other">
                         <label for="other">Other</label>
                     </div>
 
-                    <h3>Single selection list</h3>
+                    <h3>What action phrases does Apple use?</h3>
                     <div class="survey--item">
-                        <label for="cars" value="Choose a car" aria-hidden="true"></label>
-                        <select name="cars" id="cars">
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                        </select>
+                        <input type="checkbox" id="learn" name="highlight" value="learn">
+                        <label for="learn">Learn more</label><br>
+                        <input type="checkbox" id="buy" name="highlight" value="buy">
+                        <label for="buy">Buy</label><br>
+                        <input type="checkbox" id="order" name="highlight" value="order">
+                        <label for="order">Order</label><br>
+                        <input type="checkbox" id="try" name="highlight" value="try">
+                        <label for="try">Try it free</label>
                     </div>
 
-                    <h3>Multi-choice selection</h3>
+                    <h3>Any final thoughts?</h3>
                     <div class="survey--item">
-                        <input type="checkbox" id="phone" name="highlight" value="phone">
-                        <label for="phone">iPhone</label><br>
-                        <input type="checkbox" id="phone" name="highlight" value="phone">
-                        <label for="ipad">iPad</label><br>
-                        <input type="checkbox" id="other" name="highlight" value="other">
-                        <label for="other">Other</label>
+                        <label for="final" aria-hidden="true" value="Final thoughts?"></label>
+                        <textarea id="final" name="final" rows="4" cols="50"></textarea> 
                     </div>
-
-                    <h3>Submit your final thoughts.</h3>
-                    <div class="survey--item">
-                        <label for="w3review" aria-hidden="true" value="Review of W3Schools:"></label>
-                        <textarea id="w3review" name="w3review" rows="4" cols="50">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
-                        </textarea> 
+                    
+                    <div class="survey--actions">
+                        <input type="submit">
+                        <input type="reset">
                     </div>
-
-                    <input type="submit">
                 </form>
             </div>
-        </main>        
+        </main>
+        <footer>
+            <span class="signature">
+                Designed by <a href="https://github.com/dkutin">dkutin</a>.
+            </span>
+        </footer>      
     </body>
 </html>
