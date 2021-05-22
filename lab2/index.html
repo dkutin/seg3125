@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="styles/style.css" rel="stylesheet" type="text/css">
+  <script src="scripts/groceries.js"></script>
+  <script src="scripts/main.js"></script>
+
+  <link rel="shortcut icon" type="image/jpg" href="public/favicon.ico"/>
+  <title>Lab 2 - Grocery Cart</title>
+</head>
+
+  <body>
+    <main>
+
+    <h1>UberGroceries</h1>
+
+    <!-- Tab links, each one with an onclick event associated with it -->
+    <div class="tab">
+      <button class="tablinks" onclick="openInfo(event, 'Client')">Client</button>
+      <button class="tablinks" onclick="openInfo(event, 'Products')">Products</button>
+      <button class="tablinks" onclick="openInfo(event, 'Cart')">Cart</button>
+    </div>
+
+    <!-- Tab content -->
+    <div id="Client" class="tabcontent">
+      <h2>Tell us a bit about you.</h2>
+      <p>Do you have any dietary restrictions?</p>
+      <select id="dietSelect" name="dietSelect" onchange="populateListProductChoices(this.id, 'displayProduct')">
+        <option value="">- Select -</option>
+        <option value="None">None</option>
+        <option value="Lactose">Lactose Free</option>
+        <option value="NutFree">Nut Free</option>
+      </select><br/>
+      <label for="dietSelect">Choose your dietary restrictions.</label>
+      <p>Would you like to shop for Organic options?</p>
+      <input id="organic" type="checkbox" name="organic" value="organic" onclick="populateListProductChoices('dietSelect', 'displayProduct')">
+      <label for="organic">Yes, only show me Organic options.</label> <br/>
+    </div>
+
+    <div id="Products" class="tabcontent">
+      <h2>Your targeted products.</h2>
+      <p>We preselected products based on your restrictions.</p>
+      <p>Choose items to buy:</p>
+      <div id="displayProduct"></div>
+      <button id="addCart" type="button" class="block" onclick="selectedItems()">
+        Add selected items to cart.
+      </button>
+    </div>
+
+    <div id="Cart" class="tabcontent">
+      <h2>Your cart.</h2>
+      <div id="displayCart">
+        <p>Nothing here yet!</p>
+      </div>
+    </div>
+    </main>
+
+    <footer>
+      <span class="signature">
+        Designed by <a href="https://github.com/dkutin">dkutin</a>.
+      </span>
+    </footer>
+  </body>
+</html>
