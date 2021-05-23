@@ -15,3 +15,9 @@ Your site should contain:
 - Your signature (Website designed by ...) at the bottom of the page.
 - The use of external CSS (separate file) to define styles for titles, divisions, and your signature at the bottom of the site. Explore font, color, alignment, etc. changes to make the site look a little nicer. Although, for this particular lab, your evaluation will be on functionality, so don't waste too much time here if you're just starting out in JavaScript.
 - The use of JavaScript (separate files) to contain the script associated with the site.
+
+
+## TODO:
+
+- Select multiple food sensitivities.
+- Add more clear-cut options.

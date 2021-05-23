@@ -36,13 +36,14 @@ function populateListProductChoices(slct1, slct2) {
 	
 	// s2 represents the <div> in the Products tab, which shows the product list, so we first set it empty
     s2.innerHTML = "";
+
 	// obtain a reduced list of products based on restrictions
-    var optionArray = restrictListProducts(products, s1.value);
-		
-	for (i = 0; i < optionArray.length; i++) {
-			
-		var productName = optionArray[i].name;
-		var productPrice = optionArray[i].price;
+    var optionArray = restrictListProducts(products, selectOptions(s1));
+
+	for (option in optionArray) {
+
+		var productName = optionArray[option].name;
+		var productPrice = optionArray[option].price;
 		// create the checkbox and add in HTML DOM
 		var checkbox = document.createElement("input");
 		checkbox.type = "checkbox";
@@ -100,10 +101,31 @@ function selectedItems(){
 	c.appendChild(total);
 }
 
+/**
+ * 
+ * @param {*} select 
+ */
+function selectOptions(select) {
+	var result = [];
+	var options = select && select.options;
+	var opt;
+  
+	for (var i=0, iLen=options.length; i<iLen; i++) {
+	  opt = options[i];
+  
+	  if (opt.selected) {
+		result.push(opt.value || opt.text);
+	  }
+	}
+	return result;
+}
+
 window.onload = () => {
 	let tabcontent = document.getElementsByClassName("tabcontent");
 	let tablinks = document.getElementsByClassName("tablinks");
 
 	tabcontent[0].style.display = 'block';
 	tablinks[0].className += ' active';
+
+	populateListProductChoices('dietSelect', 'displayProduct');
 }

@@ -25,13 +25,12 @@
     <div id="Client" class="tabcontent">
       <h2>Tell us a bit about you.</h2>
       <p>Do you have any dietary restrictions?</p>
-      <select id="dietSelect" name="dietSelect" onchange="populateListProductChoices(this.id, 'displayProduct')">
-        <option value="">- Select -</option>
-        <option value="None">None</option>
-        <option value="Lactose">Lactose Free</option>
-        <option value="NutFree">Nut Free</option>
+      <select multiple id="dietSelect" name="dietSelect" onchange="populateListProductChoices(this.id, 'displayProduct')">
+        <option value="lactoseFree">Lactose free</option>
+        <option value="nutFree">Nut allergy</option>
+        <option value="None" selected aria-hidden="true">None of the above</option>
       </select><br/>
-      <label for="dietSelect">Choose your dietary restrictions.</label>
+      <label for="dietSelect">Select all that apply.</label>
       <p>Would you like to shop for Organic options?</p>
       <input id="organic" type="checkbox" name="organic" value="organic" onclick="populateListProductChoices('dietSelect', 'displayProduct')">
       <label for="organic">Yes, only show me Organic options.</label> <br/>
