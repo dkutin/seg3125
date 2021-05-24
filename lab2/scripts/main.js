@@ -34,7 +34,6 @@ function populateListProductChoices(slct1, slct2) {
     var s1 = document.getElementById(slct1);
     var s2 = document.getElementById(slct2);
 	
-	// s2 represents the <div> in the Products tab, which shows the product list, so we first set it empty
     s2.innerHTML = "";
 
 	// obtain a reduced list of products based on restrictions
@@ -51,7 +50,7 @@ function populateListProductChoices(slct1, slct2) {
 		checkbox.value = productName;
 		checkbox.id = productName
 		s2.appendChild(checkbox);
-		
+
 		// create a label for the checkbox, and also add in HTML DOM
 		var label = document.createElement('label')
 		label.htmlFor = productName;

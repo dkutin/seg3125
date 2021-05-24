@@ -89,8 +89,7 @@ function restrictListProducts(products, restrictions) {
 
 	for (var index in products) {
 		let product = products[index];
-
-		if (restrictions.includes('None')) {
+		if (restrictions.length == 0) {
 			if ((organic && product.organic) || !organic)
 				product_names.push({
 					name: product.name, 
