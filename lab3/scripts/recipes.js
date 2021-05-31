@@ -1,0 +1,6 @@
+/**
+ * 
+ */
+function handleRecipeReveal(id) {
+    
+}

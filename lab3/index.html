@@ -2,57 +2,89 @@
 <html>
 <head>
 	<link href="styles/style.css" rel="stylesheet" type="text/css">
+  <link href="styles/accordion.css" rel="stylesheet" type="text/css">
+
   <script src="scripts/groceries.js"></script>
   <script src="scripts/main.js"></script>
+  <script src="scripts/recipes.js"></script>
+  <script src="scripts/accordion.js"></script>
 
   <link rel="shortcut icon" type="image/jpg" href="public/favicon.ico"/>
-  <title>Lab 2 - Grocery Cart</title>
+  <title>Lab 3 - Grocery Cart</title>
 </head>
 
   <body>
     <main>
 
-    <h1>UberGroceries</h1>
+    <h1>UberGroceries v2.0</h1>
 
-    <!-- Tab links, each one with an onclick event associated with it -->
-    <div class="tab">
-      <button class="tablinks" onclick="openInfo(event, 'Client')">Client</button>
-      <button class="tablinks" onclick="openInfo(event, 'Products')">Products</button>
-      <button class="tablinks" onclick="openInfo(event, 'Cart')">Cart</button>
-    </div>
-
-    <!-- Tab content -->
-    <div id="Client" class="tabcontent">
-      <h2>Tell us a bit about you.</h2>
+    <button class="accordion">
+      <!-- Accordion -->
+      <h2 style="color: white; display: inline;">1. Tell us a bit about you</h2>
+    </button>
+    <div class="panel">
+      <!-- Tab content -->
+      <div class="location">
+        <h3>Your information.</h3>
+        <div class="survey--item">
+          <label for="fname">First name</label>
+          <input type="text" id="fname" name="fname">
+          <label for="lname">Last name</label>
+          <input type="text" id="lname" name="lname">
+          <label for="city">City</label>
+          <input type="text" id="city" name="city">
+        </div>
+      </div>
       <p>Do you have any dietary restrictions?</p>
-      <select multiple id="dietSelect" name="dietSelect" onchange="populateListProductChoices(this.id, 'displayProduct')">
-        <option value="lactoseFree">Lactose intolerance</option>
-        <option value="nutFree">Nut allergy</option>
-      </select><br/>
-      <label for="dietSelect">Select all that apply. (Use cmd to select multiple)</label>
-      <p>Would you like to shop for Organic options?</p>
-      <input id="organic" type="checkbox" name="organic" value="organic" onclick="populateListProductChoices('dietSelect', 'displayProduct')">
-      <label for="organic">Yes, only show me Organic options.</label> <br/>
-    </div>
-
-    <div id="Products" class="tabcontent">
-      <h2>Your targeted products.</h2>
-      <p>We preselected products based on your restrictions.</p>
-      <p>Choose items to buy:</p>
-      <div id="displayProduct"></div>
-      <button id="addCart" type="button" class="block" onclick="selectedItems()">
-        Add selected items to cart.
-      </button>
-    </div>
-
-    <div id="Cart" class="tabcontent">
-      <h2>Your cart.</h2>
-      <div id="displayCart">
-        <p>Nothing here yet!</p>
+      <div class="survey--item dietSelect">
+        <input id="lactoseFree" type="checkbox" name="organic" value="lactoseFree" onclick="populateListProductChoices('dietSelect', 'displayProduct')">
+        <label for="lactoseFree">Lactose sensitive</label> <br/>
+        <input id="nutFree" type="checkbox" name="organic" value="nutFree" onclick="populateListProductChoices('dietSelect', 'displayProduct')">
+        <label for="nutFree">Nut allergy</label> <br/>
+        <input id="glutenFree" type="checkbox" name="organic" value="glutenFree" onclick="populateListProductChoices('dietSelect', 'displayProduct')">
+        <label for="glutenFree">Gluten allergy</label> <br/>
+        <input id="organic" type="checkbox" name="dietSelect" value="organic" onclick="populateListProductChoices('dietSelect', 'displayProduct')">
+        <label for="organic">Show me organic options.</label> <br/>
+      </div>
+      <p>Would you like to see reccommended recipes?</p>
+      <div class="survey--item recipeSelect">
+        <input id="recipe" type="checkbox" name="recipeSelect" value="recipe" onclick="handleRecipeReveal(this.id)">
+        <label for="recipe">Yes, I would like to see recipes.</label> <br/>
+      </div>
+      <div class="form--actions">
+        <button id="step1" onclick="next(event, 1)">Next > </button>
       </div>
     </div>
-    </main>
 
+    <button class="accordion">
+      <!-- Accordion -->
+      <h2 style="color: white; display: inline;">2. Explore our products</h2>
+    </button>
+    <div class="panel">
+      <div id="Products" class="tabcontent">
+        <h2>Your targeted products.</h2>
+        <p>We preselected products based on your restrictions.</p>
+        <p>Choose items to buy:</p>
+        <div id="displayProduct"></div>
+        <button id="addCart" type="button" class="block" onclick="selectedItems()">
+          Add selected items to cart.
+        </button>
+      </div>
+    </div>
+
+    <button class="accordion">
+      <!-- Accordion -->
+      <h2 style="color: white; display: inline;">3. Review your order</h2>
+    </button>
+    <div class="panel">
+      <div id="Cart" class="tabcontent">
+        <h3>Your cart.</h3>
+        <div id="displayCart">
+          <p>Nothing here yet!</p>
+        </div>
+      </div>
+      </main>
+    </div>
     <footer>
       <span class="signature">
         Designed by <a href="https://github.com/dkutin">dkutin</a>.

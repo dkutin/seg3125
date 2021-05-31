@@ -52,7 +52,7 @@ h3 {
 }
 
 p {
-  margin: 1em 0;
+  margin: 1em 8px;
   font-size: 1.215em;
 }
 
@@ -73,12 +73,18 @@ button {
   background-color: #2E3138;
 
   transition: 0.2s;
+  min-width: 120px;
 }
 
 button:hover,
 button:focus {
-    background-color: #6c6f7d5d; 
+    background-color: #2e3138ad; 
     transition: 0.2s;
+}
+
+button.disabled {
+  background-color: #2e3138ad;
+  transition: 0.2s;
 }
 
 textarea,
@@ -93,7 +99,6 @@ input {
 }
 
 input[type=text] {
-    margin: 24px 0;
     display: block;
     width: 320px;
     padding: 6px;
@@ -118,7 +123,15 @@ select {
 
 input[type=checkbox]:checked + label { 
     color: #2E3138; 
-} 
+}
+
+.hidden {
+  display: none;
+}
+
+.disabled {
+  background-color: #6c6f7d5d;
+}
 
 .cart--item {
   margin: 12px 0;
@@ -127,6 +140,16 @@ input[type=checkbox]:checked + label {
 
   display: block;
   position: relative;
+}
+
+.survey--item {
+  margin-left: 12px;
+  padding-left: 18px;
+  border-left: 1px solid #2E3138;
+}
+
+.form--actions {
+  margin: 24px 0 24px 12px;
 }
 
 .product--name {
