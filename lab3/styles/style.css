@@ -126,11 +126,12 @@ input[type=checkbox]:checked + label {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .disabled {
   background-color: #6c6f7d5d;
+  cursor: none;
 }
 
 .cart--item {

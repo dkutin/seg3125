@@ -26,18 +26,24 @@ function openInfo(evt, tabName) {
 /**
  * generate a checkbox list from a list of products.
  * it makes each product name as the label for the checkboxes.
- * 
- * @param {*} slct1 
- * @param {*} slct2 
  */
-function populateListProductChoices(slct1, slct2) {
-    var s1 = document.getElementById(slct1);
-    var s2 = document.getElementById(slct2);
+function populateListProductChoices() {
+	let dietaryPreferences = document.querySelectorAll('input[type="checkbox"]:checked');
+	let display = document.getElementById('displayProduct');
+	let restrictions = [];
+
+	console.log(display);
+
+	for (let preference of dietaryPreferences) {
+		restrictions.push(preference.value);
+	}
 	
-    s2.innerHTML = "";
+	display.innerHTML = "";
 
 	// obtain a reduced list of products based on restrictions
-    var optionArray = restrictListProducts(products, selectOptions(s1));
+    var optionArray = restrictListProducts(products, restrictions);
+
+	console.log('option Array', optionArray);
 
 	for (option in optionArray) {
 
@@ -49,17 +55,17 @@ function populateListProductChoices(slct1, slct2) {
 		checkbox.name = "product";
 		checkbox.value = productName;
 		checkbox.id = productName
-		s2.appendChild(checkbox);
+		display.appendChild(checkbox);
 
 		// create a label for the checkbox, and also add in HTML DOM
 		var label = document.createElement('label')
 		label.htmlFor = productName;
 		label.value = productName;
 		label.appendChild(document.createTextNode(` ${productName} - $${productPrice.toFixed(2)}`));
-		s2.appendChild(label);
+		display.appendChild(label);
 		
 		// create a breakline node and add in HTML DOM
-		s2.appendChild(document.createElement("br"));    
+		display.appendChild(document.createElement("br"));    
 	}
 }
 
@@ -109,7 +115,7 @@ function selectOptions(select) {
 	var options = select && select.options;
 	var opt;
   
-	for (var i=0, iLen=options.length; i<iLen; i++) {
+	for (var i=0, iLen=select.length; i<iLen; i++) {
 	  opt = options[i];
   
 	  if (opt.selected) {
@@ -119,12 +125,25 @@ function selectOptions(select) {
 	return result;
 }
 
+/**
+ * Handle revealing the accordion at the next or previous step.
+ */
+function next(step) {
+	// Expand the next accordion.
+	let accordion = document.getElementById(`step-${step}`);
+
+	// Check if the recipes option is selected.
+	if (!document.getElementById('step-2.1').classList.contains('hidden') && (step == 3)) {
+		accordion = document.getElementById(`step-2.1`);
+	}
+
+	accordion.classList.remove('disabled');
+	accordion.classList.add('active');
+	accordion.nextElementSibling.classList.remove('hidden');
+
+	resetAccordions(accordion);
+}
+
 window.onload = () => {
-	let tabcontent = document.getElementsByClassName("tabcontent");
-	let tablinks = document.getElementsByClassName("tablinks");
-
-	tabcontent[0].style.display = 'block';
-	tablinks[0].className += ' active';
-
-	populateListProductChoices('dietSelect', 'displayProduct');
+	populateListProductChoices();
 }

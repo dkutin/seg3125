@@ -85,10 +85,12 @@ const products = [
  */
 function restrictListProducts(products, restrictions) {
 	let product_names = [];
-	let organic = document.getElementById('organic').checked;
+
+	console.log(restrictions);
 
 	for (var index in products) {
 		let product = products[index];
+		console.log("here");
 		if (restrictions.length == 0) {
 			if ((organic && product.organic) || !organic)
 				product_names.push({
