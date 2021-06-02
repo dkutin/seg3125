@@ -7,6 +7,7 @@ const products = [
 		name: "tomato",
 		lactoseFree: true,
 		nutFree: true,
+		glutenFree: true,
 		organic: true,
 		price: 0.49
 	},
@@ -14,6 +15,7 @@ const products = [
 		name: "onion",
 		lactoseFree: true,
 		nutFree: true,
+		glutenFree: true,
 		organic: true,
 		price: 0.49
 	},
@@ -21,6 +23,7 @@ const products = [
 		name: "brocoli",
 		lactoseFree: true,
 		nutFree: true,
+		glutenFree: true,
 		organic: true,
 		price: 1.99
 	},
@@ -28,6 +31,7 @@ const products = [
 		name: "baguette",
 		lactoseFree: true,
 		nutFree: true,
+		glutenFree: false,
 		organic: false,
 		price: 2.00
 	},
@@ -35,6 +39,7 @@ const products = [
 		name: "cucumber",
 		lactoseFree: true,
 		nutFree: true,
+		glutenFree: true,
 		organic: true,
 		price: 2.10
 	},
@@ -42,6 +47,7 @@ const products = [
 		name: "milk",
 		lactoseFree: false,
 		nutFree: true,
+		glutenFree: true,
 		organic: false,
 		price: 2.35
 	},
@@ -49,6 +55,7 @@ const products = [
 		name: "peanut butter",
 		lactoseFree: true,
 		nutFree: false,
+		glutenFree: true,
 		organic: false,
 		price: 4.00
 	},
@@ -56,12 +63,14 @@ const products = [
 		name: "cherries",
 		lactoseFree: true,
 		nutFree: true,
+		glutenFree: true,
 		organic: true,
 		price: 6.00
 	},
 	{
 		name: "pecan pie",
 		lactoseFree: false,
+		nutFree: false,
 		nutFree: false,
 		organic: false,
 		price: 7.99
@@ -70,6 +79,7 @@ const products = [
 		name: "salmon",
 		lactoseFree: true,
 		nutFree: true,
+		glutenFree: true,
 		organic: true,
 		price: 10.00
 	},
@@ -92,25 +102,18 @@ function restrictListProducts(products, restrictions) {
 		let product = products[index];
 		console.log("here");
 		if (restrictions.length == 0) {
-			if ((organic && product.organic) || !organic)
-				product_names.push({
-					name: product.name, 
-					price: product.price
-				});
-		} else if (restrictions.includes('nutFree') && restrictions.includes('lactoseFree')) {
-			if (((organic && product.organic) || !organic) && product.nutFree && product.lactoseFree)
-				product_names.push({
-					name: product.name, 
-					price: product.price
-				});
-		} else if (restrictions.includes('nutFree')) {
-			if (((organic && product.organic) || !organic) && product.nutFree)
-				product_names.push({
-					name: product.name, 
-					price: product.price
-				});
-		} else if (restrictions.includes('lactoseFree')) {
-			if (((organic && product.organic) || !organic) && product.lactoseFree)
+			product_names.push({
+				name: product.name, 
+				price: product.price
+			});
+		} else {
+			var allowed = true;
+			for (let rindex in restrictions) {
+				let restriction = restrictions[rindex];
+				allowed = allowed && product[restriction];
+			}
+
+			if (allowed)
 				product_names.push({
 					name: product.name, 
 					price: product.price
