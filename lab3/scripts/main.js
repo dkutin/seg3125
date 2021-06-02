@@ -32,8 +32,6 @@ function populateListProductChoices() {
 	let display = document.getElementById('displayProduct');
 	let restrictions = [];
 
-	console.log(display);
-
 	for (let preference of dietaryPreferences) {
 		restrictions.push(preference.value);
 	}
@@ -42,8 +40,6 @@ function populateListProductChoices() {
 
 	// obtain a reduced list of products based on restrictions
     var optionArray = restrictListProducts(products, restrictions);
-
-	console.log('option Array', optionArray);
 
 	for (option in optionArray) {
 
@@ -127,6 +123,8 @@ function selectOptions(select) {
 
 /**
  * Handle revealing the accordion at the next or previous step.
+ * 
+ * @param {*} step
  */
 function next(step) {
 	// Expand the next accordion.
@@ -144,6 +142,6 @@ function next(step) {
 	resetAccordions(accordion);
 }
 
-window.onload = () => {
+window.addEventListener('load', (event) => {
 	populateListProductChoices();
-}
+});

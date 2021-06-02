@@ -96,11 +96,8 @@ const products = [
 function restrictListProducts(products, restrictions) {
 	let product_names = [];
 
-	console.log(restrictions);
-
 	for (var index in products) {
 		let product = products[index];
-		console.log("here");
 		if (restrictions.length == 0) {
 			product_names.push({
 				name: product.name, 
