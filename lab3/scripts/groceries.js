@@ -4,7 +4,7 @@
  */
 const products = [
 	{
-		name: "tomato",
+		name: "Tomatoes",
 		lactoseFree: true,
 		nutFree: true,
 		glutenFree: true,
@@ -12,7 +12,7 @@ const products = [
 		price: 0.49
 	},
 	{
-		name: "onion",
+		name: "Onion",
 		lactoseFree: true,
 		nutFree: true,
 		glutenFree: true,
@@ -20,7 +20,7 @@ const products = [
 		price: 0.49
 	},
 	{
-		name: "brocoli",
+		name: "Broccoli",
 		lactoseFree: true,
 		nutFree: true,
 		glutenFree: true,
@@ -28,7 +28,7 @@ const products = [
 		price: 1.99
 	},
 	{
-		name: "baguette",
+		name: "Baguette",
 		lactoseFree: true,
 		nutFree: true,
 		glutenFree: false,
@@ -36,7 +36,7 @@ const products = [
 		price: 2.00
 	},
 	{
-		name: "cucumber",
+		name: "Cucumber",
 		lactoseFree: true,
 		nutFree: true,
 		glutenFree: true,
@@ -44,7 +44,7 @@ const products = [
 		price: 2.10
 	},
 	{
-		name: "milk",
+		name: "Milk",
 		lactoseFree: false,
 		nutFree: true,
 		glutenFree: true,
@@ -52,7 +52,7 @@ const products = [
 		price: 2.35
 	},
 	{
-		name: "peanut butter",
+		name: "Peanut butter",
 		lactoseFree: true,
 		nutFree: false,
 		glutenFree: true,
@@ -60,7 +60,7 @@ const products = [
 		price: 4.00
 	},
 	{
-		name: "cherries",
+		name: "Cherries",
 		lactoseFree: true,
 		nutFree: true,
 		glutenFree: true,
@@ -68,7 +68,7 @@ const products = [
 		price: 6.00
 	},
 	{
-		name: "pecan pie",
+		name: "Pecan pie",
 		lactoseFree: false,
 		nutFree: false,
 		nutFree: false,
@@ -76,7 +76,7 @@ const products = [
 		price: 7.99
 	},
 	{
-		name: "salmon",
+		name: "Salmon",
 		lactoseFree: true,
 		nutFree: true,
 		glutenFree: true,
@@ -101,7 +101,8 @@ function restrictListProducts(products, restrictions) {
 		if (restrictions.length == 0) {
 			product_names.push({
 				name: product.name, 
-				price: product.price
+				price: product.price,
+				organic: product.organic
 			});
 		} else {
 			var allowed = true;
@@ -113,7 +114,8 @@ function restrictListProducts(products, restrictions) {
 			if (allowed)
 				product_names.push({
 					name: product.name, 
-					price: product.price
+					price: product.price,
+					organic: product.organic
 				});
 		}
 	}
@@ -121,18 +123,3 @@ function restrictListProducts(products, restrictions) {
 	return product_names;
 }
 
-/**
- * Calculate the total price of items, with received parameter being a list of products.
- *
- * @param {*} chosenProducts 
- * @returns 
- */
-function getTotalPrice(chosenProducts) {
-	totalPrice = 0;
-	for (let i=0; i<products.length; i+=1) {
-		if (chosenProducts.indexOf(products[i].name) > -1){
-			totalPrice += products[i].price;
-		}
-	}
-	return totalPrice.toFixed(2);
-}

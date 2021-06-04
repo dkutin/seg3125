@@ -17,7 +17,7 @@
   <body>
     <main>
 
-    <h1>UberGroceries v2.0</h1>
+    <h1>UberGroceries</h1>
 
     <button id="step-1" class="accordion">
       <!-- Accordion -->
@@ -37,27 +37,27 @@
         </div>
       </div>
       <p>Do you have any dietary restrictions?</p>
-      <div class="survey--item">
-        <input id="lactoseFree" type="checkbox" name="dietSelect" value="lactoseFree" onclick="populateListProductChoices()">
+      <div class="survey--item displayProduct">
+        <input id="lactoseFree" type="checkbox" name="dietSelect" value="lactoseFree" onchange="populateListProductChoices()">
         <label for="lactoseFree">Lactose sensitive</label> <br/>
-        <input id="nutFree" type="checkbox" name="dietSelect" value="nutFree" onclick="populateListProductChoices()">
+        <input id="nutFree" type="checkbox" name="dietSelect" value="nutFree" onchange="populateListProductChoices()">
         <label for="nutFree">Nut allergy</label> <br/>
-        <input id="glutenFree" type="checkbox" name="dietSelect" value="glutenFree" onclick="populateListProductChoices()">
+        <input id="glutenFree" type="checkbox" name="dietSelect" value="glutenFree" onchange="populateListProductChoices()">
         <label for="glutenFree">Gluten allergy</label> <br/>
-        <input id="organic" type="checkbox" name="dietSelect" value="organic" onclick="populateListProductChoices()">
+        <input id="organic" type="checkbox" name="dietSelect" value="organic" onchange="populateListProductChoices()">
         <label for="organic">Show me organic options.</label><br/>
       </div>
-      <p>Would you like to see reccommended recipes?</p>
+      <p>Would you like to see recipes based on your dietary preferences?</p>
       <div class="survey--item recipeSelect">
-        <input id="recipe" type="checkbox" name="recipeSelect" value="recipe" onclick="handleRecipeReveal(this.id)">
+        <input id="recipe" type="checkbox" name="recipeSelect" value="recipe" onchange="handleRecipeReveal(this.id)">
         <label for="recipe">Yes, I would like to see recipes.</label> <br/>
       </div>
       <div class="form--actions">
-        <button onclick="next(2)">Next > </button>
+        <button onclick="next(2)">Shop > </button>
       </div>
     </div>
 
-    <button id="step-2"class="accordion disabled">
+    <button id="step-2"class="accordion">
       <!-- Accordion -->
       <h2 style="color: white; display: inline;">2. Explore our products</h2>
     </button>
@@ -65,7 +65,7 @@
       <div id="Products">
         <h2>Your targeted products.</h2>
         <p>We preselected products based on your restrictions.</p>
-        <p>Choose items to buy:</p>
+        <p>Choose products to purchase:</p>
         <div class="survey--item">
           <div id="displayProduct">
             <p>Nothing here yet!</p>
@@ -84,34 +84,49 @@
     </div>
 
     <!-- To be added to the form, we will need to handle this somehow in next. -->
-    <button id="step-2.1" class="accordion disabled hidden">
+    <button id="step-2.1" class="accordion hidden">
       <!-- Accordion -->
-      <h2 style="color: white; display: inline;">2.1 Explore your recommended recipes</h2>
+      <h2 style="color: white; display: inline;">2.1 Explore our recipes</h2>
     </button>
     <div class="panel hidden">
       <div id="Products">
         <h2>Your targeted products.</h2>
         <p>We preselected products based on your restrictions.</p>
-        <p>Choose items to buy:</p>
-        <button id="addCart" type="button" class="block" onclick="selectedItems()">
-          Add selected items to cart.
-        </button>
+        <p>Choose bundles to purchase:</p>
+        <div class="survey--item">
+          <div id="displayRecipes">
+          </div>
+        </div>
+        <div class="form--actions">
+          <button id="addCart" type="button" class="block" onclick="selectedItems()">
+            Add selected items to cart.
+          </button>
+        </div>
       </div>
       <div class="form--actions">
         <button onclick="next(2)">< Previous </button>
-        <button onclick="next(3)">Next > </button>
+        <button onclick="next(3, true)">Next > </button>
       </div>
     </div>
 
-    <button id="step-3" class="accordion disabled">
+    <button id="step-3" class="accordion">
       <!-- Accordion -->
       <h2 style="color: white; display: inline;">3. Review your order</h2>
     </button>
     <div class="panel hidden">
       <div id="Cart">
-        <h3>Your cart.</h3>
-        <div id="displayCart">
-          <p>Nothing here yet!</p>
+        <h2>Your cart.</h2>
+        <p>Schedule a drop-off time</p>
+        <div class="survey--item">
+          <input name="delivery" type="date">
+          <label aria-hidden="true" for="delivery" hidden>Schedule a drop-off time</label>
+        </div>
+        <div class="cart">
+          <div id="displayCart">
+            <p>No products selected yet!</p>
+          </div>
+          <div class="cart--item" id="total">
+          </div>
         </div>
       </div>
       <div class="form--actions">

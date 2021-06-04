@@ -210,11 +210,13 @@ input[type=checkbox]:checked + label {
   font-weight: bold;
 }
 
+h3.total--text,
 p.total--text {
   display: block;
   float: left;
 }
 
+h3.total--amount,
 p.total--amount {
   display: block;
   float: right;
@@ -241,6 +243,11 @@ span.signature > a:hover {
 
 #displayProduct {
   margin: 12px 0 24px;
+}
+
+#total,
+#displayCart {
+  margin: 12px;
 }
 
 @media only screen and (max-width: 768px) {

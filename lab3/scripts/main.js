@@ -1,4 +1,9 @@
 /**
+ * Instatiate global for keeping track of total cart.
+ */
+var total_price = 0;
+
+/**
  * This function is called when any of the tab is clicked.
  * It is adapted from https://www.w3schools.com/howto/howto_js_tabs.asp.
  * @param {*} evt 
@@ -28,7 +33,7 @@ function openInfo(evt, tabName) {
  * it makes each product name as the label for the checkboxes.
  */
 function populateListProductChoices() {
-	let dietaryPreferences = document.querySelectorAll('input[type="checkbox"]:checked');
+	let dietaryPreferences = document.querySelectorAll('.displayProduct > input[type="checkbox"]:checked');
 	let display = document.getElementById('displayProduct');
 	let restrictions = [];
 
@@ -45,6 +50,7 @@ function populateListProductChoices() {
 
 		var productName = optionArray[option].name;
 		var productPrice = optionArray[option].price;
+		var isOrganic = optionArray[option].organic;
 		// create the checkbox and add in HTML DOM
 		var checkbox = document.createElement("input");
 		checkbox.type = "checkbox";
@@ -57,11 +63,11 @@ function populateListProductChoices() {
 		var label = document.createElement('label')
 		label.htmlFor = productName;
 		label.value = productName;
-		label.appendChild(document.createTextNode(` ${productName} - $${productPrice.toFixed(2)}`));
+		label.appendChild(document.createTextNode(` ${productName} - $${productPrice.toFixed(2)} ${isOrganic ? '(organic)' : ''}`));
 		display.appendChild(label);
 		
 		// create a breakline node and add in HTML DOM
-		display.appendChild(document.createElement("br"));    
+		display.appendChild(document.createElement("br"));
 	}
 }
 
@@ -77,6 +83,12 @@ function selectedItems(){
 	let c = document.getElementById('displayCart');
 
 	c.innerHTML = "";
+
+
+	let heading = document.createElement('h3');
+	heading.innerHTML = 'Products';
+
+	c.appendChild(heading);
 	
 	// build list of selected item
 	for (i = 0; i < ele.length; i++) { 
@@ -96,10 +108,14 @@ function selectedItems(){
 
 	let total = document.createElement('div');
 	total.className = 'total';
-	total.innerHTML = `<p class='total--text'>Total</p>`;
-	total.innerHTML += `<p class='total--amount'>$${getTotalPrice(chosenProducts)}</p>`;
+	total.innerHTML = `<p class='total--text'>Product Sub-Total</p>`;
+	total.innerHTML += `<p id='products--total' class='total--amount'>$${getTotalPrice(chosenProducts)}</p>`;
+
+	total_price = getTotalPrice(chosenProducts);
 
 	c.appendChild(total);
+
+	selectedRecipes();
 }
 
 /**
@@ -126,7 +142,7 @@ function selectOptions(select) {
  * 
  * @param {*} step
  */
-function next(step) {
+function next(step, final = false) {
 	// Expand the next accordion.
 	let accordion = document.getElementById(`step-${step}`);
 
@@ -135,11 +151,46 @@ function next(step) {
 		accordion = document.getElementById(`step-2.1`);
 	}
 
+	if (final) {
+		accordion = document.getElementById(`step-3`);
+	}
+
+	if (step == 3) {
+		getFinalTotalPrice();
+	}
+
 	accordion.classList.remove('disabled');
 	accordion.classList.add('active');
 	accordion.nextElementSibling.classList.remove('hidden');
 
 	resetAccordions(accordion);
+}
+
+/**
+ * Calculate the total price of items, with received parameter being a list of products.
+ *
+ * @param {*} chosenProducts 
+ * @returns {number}
+ */
+ function getTotalPrice(chosenProducts, product=true) {
+	let type = product ? products : recipes;
+
+	var totalPrice = 0;
+	for (let i=0; i<type.length; i+=1) {
+		if (chosenProducts.indexOf(type[i].name) > -1){
+			totalPrice += type[i].price;
+		}
+	}
+	return totalPrice.toFixed(2);
+}
+
+function getFinalTotalPrice() {
+
+	let total = document.getElementById('total');
+
+	total.className = 'total'
+	total.innerHTML = `<h3 class="total--text">Total</h3>`;
+	total.innerHTML += `<h3 class="total--amount">$${parseFloat(total_price).toFixed(2)}</h3>`;
 }
 
 window.addEventListener('load', (event) => {
