@@ -1,8 +1,7 @@
 # Requirements
 
 ## Visibility: Where am I? What can I do from here?
-The following items must be present and easily visible. You have to think about how to organize the
-information, and how to present it.
+The following items must be present and easily visible. You have to think about how to organize the information, and how to present it.
 - Health clinic Information:
     - on which site the user is (logo, image, or company badge)
     - location (health service address)
@@ -35,9 +34,7 @@ information, and how to present it.
 
 ### Requirements in relation to human cognition:
 - Attention: To make sure that users "know where they are" when they return to the site (after being distracted for example), it is useful to add a menu, such as Navbar, at the top of the page. The tendency of users will often be to look at the top of the page (focus point), and check if there is a menu there. The Navbar that you will add will in fact only be a menu whose options bring the user to the right place on your page. Do not create new pages, your new menu will contain pointers to sections on your page. (You can see an example in the base code I provide.)
-- Memory: In connection with the limits of a user's short-term memory, avoid having
-menus that are too long. If you offer 10 types of services, for example, organize these
-services into sub-groups.
+- Memory: In connection with the limits of a user's short-term memory, avoid having menus that are too long. If you offer 10 types of services, for example, organize these services into sub-groups.
 - Perception: Review the laws of Gestalt as you look at your site. For example:
     - Law of Similarity: do you have similar elements (same colors, same icons, etc.) that help to see a group?
     - Law of Figure and Ground: do you have clearly visible icons on various background colors?
