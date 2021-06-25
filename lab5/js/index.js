@@ -26,8 +26,8 @@ $(document).ready(() => {
      */
     const submit = $('#submit');
     const confirmation = $('#confirmation');
-    const modal = $('#exampleModal')
-
+    const modal = $('#exampleModal');
+    const form = $('#book-appointment');
 
     /**
      * Event Listeners.
@@ -64,19 +64,46 @@ $(document).ready(() => {
 
     expert.on('change', () => {
         updateDatePicker(datePicker, expert);
-    })
+    });
 
     submit.click(() => {
 
-        // If all validity checks have passed
-        if (true) {
-            modal.modal('hide');
-            confirmation.html(`<div class="container-lg"><h3 class="my-4"> Success! </h3> <p>${getName(expert.value)} will see you on ${datePicker.val()} for a ${getService(service.value)}</p></div>`);
-            confirmation.removeAttr('hidden');
+        let textFieldsValid = validateForm([
+            firstName,
+            lastName,
+            service,
+            expert,
+            datePicker,
+            creditCardName,
+        ]);
 
+        let emailIsValid = validateEmail(email.val());
+        let phoneIsValid = validatePhone(phoneNumber.val());
+        let creditIsValid = valdateCreditCard(creditCard.val())
+
+        
+        if (textFieldsValid &&
+            emailIsValid &&
+            phoneIsValid &&
+            creditIsValid) {
+
+            modal.modal('hide');
+
+            confirmation.html(`
+                <div class="container-lg">
+                    <h3 class="my-4"> Your appointment has been booked. </h3>
+                    <p>${getName(expert.val())} will see you on ${datePicker.val()} for a ${getService(service.val())} appointment.</p>
+                </div>`
+            );
+
+            confirmation.show();
+            confirmation.removeAttr('hidden');
+        } else {
+            $('#form-invalidfeedback').html(`Some fields are invalid. Please review the form above.`);
+            $('#form-invalidfeedback').show();
             setTimeout(() => {
-                confirmation.hide();
-            }, 5000)
+                $('#form-invalidfeedback').hide();
+            }, 8000);
         }
-    })
+    });
 });

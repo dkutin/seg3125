@@ -30,7 +30,6 @@ function valdateCreditCard(number) {
  * @returns {boolean}
  */
 function validateEmail(email) {
-    console.log(email);
     const filter = /^[^\s@]+@[^\s@]+$/;
 
     return filter.test(email);
@@ -90,7 +89,12 @@ function updateDatePicker(datePicker, expert) {
     }
 }
 
-
+/**
+ * Date options for Employee One.
+ * 
+ * @param {*} date 
+ * @returns 
+ */
 function setOptionsOne(date) {
     const options = [0, 1, 6];
     let day = date.getDay();
@@ -98,7 +102,12 @@ function setOptionsOne(date) {
     return [(options.indexOf(day) === -1)];
 }
 
-
+/**
+ * Date options for Employee Two.
+ * 
+ * @param {*} date 
+ * @returns 
+ */
 function setOptionsTwo(date) {
     const options = [0, 2, 6];
     let day = date.getDay();
@@ -106,7 +115,12 @@ function setOptionsTwo(date) {
     return [(options.indexOf(day) === -1)];
 }
 
-
+/**
+ * Date options for Employee Three.
+ * 
+ * @param {*} date 
+ * @returns 
+ */
 function setOptionsThree(date) {
     const options = [0, 3, 6];
     let day = date.getDay();
@@ -114,7 +128,12 @@ function setOptionsThree(date) {
     return [(options.indexOf(day) === -1)];
 }
 
-
+/**
+ * Date options for All Employees.
+ * 
+ * @param {*} date 
+ * @returns 
+ */
 function setOptionsAll(date) {
     const options = [0, 6];
     let day = date.getDay();
@@ -122,10 +141,62 @@ function setOptionsAll(date) {
     return [(options.indexOf(day) === -1)];
 }
 
+/**
+ * Get the Name of an Employee from an ID.
+ * 
+ * @param {*} id 
+ * @returns 
+ */
 function getName(id) {
-    return 'Andrew Ho';
+    switch (id) {
+        case "1":
+            return 'Andrew Ho';
+        case "2":
+            return 'Ben Wassel';
+        case "3":
+            return 'Leila Nourishad';
+        case "4":
+        default:
+            return 'One of our physicians';
+    }
 }
 
+/**
+ * Get the Name of a Service from an ID.
+ * 
+ * @param {*} date 
+ * @returns 
+ */
 function getService(id) {
-    return 'Massage';
+    switch (id) {
+        case "1":
+            return 'Neurological Physiotherapy'
+        case "2":
+            return 'In-home Physiotherapy'
+        case "3":
+            return 'Orthopaedic Physiotherapy';
+        case "4":
+            return 'Concussion Management';
+        case "5":
+            return 'Massage Therapy';
+        default:
+            return '';
+    }
+}
+
+/**
+ * Validates form elements.
+ * 
+ * @param {*} elements 
+ * @returns 
+ */
+function validateForm(elements) {
+    for (element of elements) {
+        let value = element.val();
+
+        if (value.replace(/\s/g,"") == "") {
+            return false;
+        }
+    }
+    return true;
 }
