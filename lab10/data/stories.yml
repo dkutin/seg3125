@@ -5,4 +5,20 @@ stories:
    - action: utter_greet
    - intent: subscribe
    - action: newsletter_form
-   - active_loop: newsletter_form
+   - action: utter_subscribed
+   - intent: thankyou
+   - action: utter_thankyou
+   - intent: goodbye
+   - action: utter_goodbye
+ - story: greet and unsubscribe
+   steps:
+   - intent: greet
+   - action: utter_greet
+   - intent: unsubscribe
+   - action: utter_ask_reason
+   - intent: reason
+   - action: utter_unsubscribed
+   - intent: thankyou
+   - action: utter_thankyou
+   - intent: goodbye
+   - action: utter_goodbye

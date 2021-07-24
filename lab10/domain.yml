@@ -6,6 +6,10 @@ intents:
 - greet
 - inform
 - subscribe
+- thankyou
+- goodbye
+- reason
+- unsubscribe
 slots:
   email:
     type: unfeaturized
@@ -16,6 +20,14 @@ responses:
       Hello! How can I help you?
   - text: |
       Hi!
+  - text: |
+      Good day!
+  - text: |
+      How can I assist you?
+  - text: |
+      Hello!
+  - text: |
+      Hi there! How can I be of assistance?
   utter_ask_email:
   - text: |
       What is your email address?
@@ -23,10 +35,50 @@ responses:
   - text: |
       Check your inbox at {email} in order to finish subscribing to the newsletter!
   - text: You're all set! Check your inbox at {email} to confirm your subscription.
+  utter_unsubscribed:
+  - text: |
+      You have successfully unsubscribed. We're sorry to see you leave.
+  - text: |
+      You're all set! We've removed your email from our mailing list. We hope to see you back soon.s
+  - text: |
+      We will no longer send the newsletter to you. We're sad to see you leave.
+  - text: |
+      You have unsubscribed from our newsletter. We're sorry to see you go.
+  utter_thankyou: 
+  - text: |
+      Glad I could help.
+  - text: |
+      No problem!
+  - text: |
+      Any time.
+  - text: |
+      Happy to help.
+  utter_goodbye:
+  - text: |
+      Goodbye
+  - text: |
+      Bye
+  - text: |
+      Take care
+  - text: |
+      See you
+  utter_ask_reason:
+  - text: |
+      Is there a reason for you unsubscribing?
+  - text: |
+      Could you share your reasoning for leaving?
+  - text: |
+      Would you be able to provide us with your reasoning for unsubscribing?
+  - text: |
+      Can you share your reasoing for leaving?
 actions:
 - '...'
 - utter_greet
 - utter_subscribed
+- utter_unsubscribe
+- utter_thankyou
+- utter_goodbye
+- utter_ask_reason
 forms:
   newsletter_form:
     required_slots:
